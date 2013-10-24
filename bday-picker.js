@@ -36,7 +36,11 @@
       "fieldId"       : "birthdate",
       "hiddenDate"    : true,
       "onChange"      : null,
-      "tabindex"      : null
+      "tabindex"      : null,
+      "yearLabel"     : "",
+      "monthLabel"    : "",
+      "dayLabel"      : "",
+      "labelOrder"    : "before"
     };
 
     return this.each(function() {
@@ -75,6 +79,17 @@
           $day.attr('tabindex', tabindex++);
           $year.attr('tabindex', tabindex++);
         }
+      }
+
+	  //add lables before or after each control
+      if(settings["labelOrder"]==="before") {
+        $year.before(settings["yearLabel"]);
+        $month.before(settings["monthLabel"]);
+        $day.before(settings["dayLabel"]);
+      } else {
+        $year.after(settings["yearLabel"]);
+        $month.after(settings["monthLabel"]);
+        $day.after(settings["dayLabel"]);
       }
 
       // Add the option placeholders if specified
